@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Quote Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: blue;
+            text-align: center;
+            font-family: "Poppins", serif;
+
+        }
+
+        .main {
+            width: 90%;
+            max-width: 400px;
+            background-color: white;
+            border-radius: 10px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        #quote {
+            font-size: 18px;
+            margin: 20px 0;
+        }
+
+        #author {
+            font-style: italic;
+            color: gray;
+        }
+
+        button {
+            padding: 15px 30px;
+            border-radius: 25px;
+            background-color: blue;
+            font-size: 18px;
+            font-weight: 500;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .iconss {
+            border: 1px solid blue;
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .iconss i {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Quote of the Day</h2>
+        <p id="quote">"Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis, numquam omnis."</p>
+        <p id="author">- Mary Kay Ash</p>
+        <div class="icons">
+            <div class="iconss"><i class="fa-solid fa-volume-high"></i></div>
+            <div class="iconss"><i class="fa-solid fa-copy"></i></div>
+            <div class="iconss"><i class="fa-brands fa-twitter"></i></div>
+        </div>
+        <button onclick="generateQuote()">New Quote</button>
+    </div>
+
+    <script>
+        const quotes = [
+            { quote: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+            { quote: "Life is 10% what happens to us and 90% how we react to it.", author: "Charles R. Swindoll" },
+            { quote: "In the middle of difficulty lies opportunity.", author: "Albert Einstein" },
+            { quote: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+            { quote: "The best way to predict the future is to invent it.", author: "Alan Kay" }
+        ];
+
+        function generateQuote() {
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const selectedQuote = quotes[randomIndex];
+            document.getElementById('quote').textContent = `"${selectedQuote.quote}"`;
+            document.getElementById('author').textContent = `- ${selectedQuote.author}`;
+        }
+    </script>
+</body>
+
+</html>

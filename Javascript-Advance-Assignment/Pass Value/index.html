@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Text Input Display</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", serif;
+
+        }
+
+        .main {
+            width: 300px;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        input {
+            height: 40px;
+            width: 100%;
+            margin: 10px 0;
+            padding: 0 5px;
+            font-size: 16px;
+            border-radius: 7px;
+        }
+
+        #demo {
+            margin-top: 10px;
+            font-size: 18px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <input type="text" id="box" oninput="showText()">
+        
+        <h3>You typed: <span id="demo"></span></h3>
+    </div>
+
+    <script>
+        function showText() {
+            let typedText = document.getElementById("box").value;
+            document.getElementById("demo").innerText = typedText;
+        }
+    </script>
+</body>
+
+</html>

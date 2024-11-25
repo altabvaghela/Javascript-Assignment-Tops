@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LocalStorage CRUD Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            text-align: center;
+            color: #444;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background: #f9f9f9;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .btn-group {
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>CRUD with LocalStorage</h1>
+    <input type="text" id="itemInput" placeholder="Enter item" required>
+    <button onclick="addItem()">Add Item</button>
+
+    <h2>Items:</h2>
+    <ul id="itemList"></ul>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', loadItems);
+
+    function loadItems() {
+        const itemList = document.getElementById('itemList');
+        itemList.innerHTML = ''; 
+
+        for (let i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+
+            addItemToDOM(key, value);
+        }
+    }
+
+    function addItem() {
+        const itemInput = document.getElementById('itemInput');
+        const itemName = itemInput.value.trim();
+
+        if (itemName) {
+            localStorage.setItem(itemName, itemName);
+            addItemToDOM(itemName, itemName); 
+            itemInput.value = '';
+        } else {
+            alert("Please enter an item name");
+        }
+    }
+
+    function addItemToDOM(key, value) {
+        const itemList = document.getElementById('itemList');
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <span>${value}</span>
+            <div class="btn-group">
+                <button onclick="editItem('${key}')">Edit</button>
+                <button onclick="deleteItem('${key}')">Delete</button>
+            </div>`;
+        itemList.appendChild(li);
+    }
+
+    function editItem(key) {
+        const newValue = prompt("Enter the new value:", key);
+        if (newValue) {
+            localStorage.setItem(newValue, newValue); 
+            localStorage.removeItem(key);
+            loadItems();
+        }
+    }
+
+    function deleteItem(key) {
+        localStorage.removeItem(key);
+        loadItems(); 
+    }
+</script>
+
+</body>
+</html>

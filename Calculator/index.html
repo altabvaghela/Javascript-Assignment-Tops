@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            font-family: "Poppins", serif;
+        }
+        body{
+            background-color: aliceblue;
+        }
+
+        .main {
+            border: 2px solid black;
+            border-radius: 10px;
+            width: 600px;
+            margin: auto;
+            padding-left: 20px;
+            margin-top: 10px;
+            padding: 20px;
+            background-color: #f9f9f9;
+
+        }
+        h1{
+            margin-top: 20px;
+        }
+
+        h2 {
+            margin: 50px 0;
+        }
+
+        .main-1 {
+            margin-left: 12px;
+        }
+
+        .main-2 {
+            display: flex;
+            align-items: center;
+            gap: 60PX;
+        }
+
+        button {
+            margin-left: 10px;
+            margin: 10px 0;
+            height: 40px;
+            width: 60px;
+            text-align: center;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .no {
+            margin-left: 100px;
+            padding: 10px;
+            padding-left: 100px;
+            border-radius: 10px;
+        }
+
+        .no .no2 {
+            margin-left: 106px;
+        }
+
+        .ans input {
+            border: none;
+            padding: 10px;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Create Basic Math Operation In JS :</h1>
+
+    <div class="main">
+        <div class="content">
+            <h2>Maths Operations</h2>
+        </div>
+        <div class="main-1">
+            Enter No1:<input type="number" placeholder="" class="no" value="" id="No-1"><br><br>
+            Enter No2:<input type="number" placeholder="" class="no no-1" value="" id="No-2">
+
+        </div>
+        <div class="main-2">
+            <div class="buttan">
+                <button onclick="sum()">+</button>
+                <button onclick="sub()">-</button>
+                <button onclick="mul()">*</button><br>
+                <button onclick=" div()">/</button>
+                <button onclick="modul()">%</button>
+            </div>
+            <div class="ans">
+                Answer is : <input type="text" name="" id="result" value="">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function sum() {
+        let val1 = document.getElementById("No-1").value
+        let val2 = document.getElementById("No-2").value
+        let sum = +val1 + +val2
+        document.getElementById("result").value = sum
+    }
+    function sub() {
+        let val1 = document.getElementById("No-1").value
+        let val2 = document.getElementById("No-2").value
+        let sum = +val1 - +val2
+        document.getElementById("result").value = sum
+    }
+    function mul() {
+        let val1 = document.getElementById("No-1").value
+        let val2 = document.getElementById("No-2").value
+        let sum = +val1 * +val2
+        document.getElementById("result").value = sum
+    }
+    function div() {
+        let val1 = document.getElementById("No-1").value
+        let val2 = document.getElementById("No-2").value
+        let sum = +val1 / +val2
+        document.getElementById("result").value = sum
+    }
+    function modul() {
+        let val1 = document.getElementById("No-1").value
+        let val2 = document.getElementById("No-2").value
+        let sum = +val1 % +val2
+        document.getElementById("result").value = sum
+    }
+</script>
+
+</html>

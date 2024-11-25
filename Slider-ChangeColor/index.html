@@ -1,0 +1,80 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Color Slider</title>
+      <style>
+          body {
+              font-family: Arial, sans-serif;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 100vh;
+              margin: 0;
+              background-color: #333;
+              color: #fff;
+          }
+          
+          .slider {
+              display: flex;
+              align-items: center;
+          }
+  
+          .color-box {
+              width: 80px;
+              height: 80px;
+              margin: 0 10px;
+              cursor: pointer;
+              border-radius: 5px;
+              transition: transform 0.3s;
+          }
+  
+          .color-box:hover {
+              transform: scale(1.1);
+          }
+  
+          .arrow {
+              font-size: 24px;
+              cursor: pointer;
+              margin: 0 15px;
+              user-select: none;
+          }
+      </style>
+  </head>
+  <body>
+  
+      <h1>Simple Color Slider</h1>
+      <div class="slider">
+          <span class="arrow" onclick="prevColor()">&#9664;</span>
+          <div id="color1" class="color-box" onclick="changeBackground('yellow')" style="background-color: yellow;"></div>
+          <div id="color2" class="color-box" onclick="changeBackground('red')" style="background-color: red;"></div>
+          <div id="color3" class="color-box" onclick="changeBackground('blue')" style="background-color: blue;"></div>
+          <div id="color4" class="color-box" onclick="changeBackground('green')" style="background-color: green;"></div>
+          <div id="color5" class="color-box" onclick="changeBackground('aqua')" style="background-color: aqua;"></div>
+          <span class="arrow" onclick="nextColor()">&#9654;</span>
+      </div>
+  
+      <script>
+          let colors = ['yellow', 'red', 'blue', 'green', 'aqua'];
+          let currentIndex = 0;
+  
+          function changeBackground(color) {
+              document.body.style.backgroundColor = color;
+          }
+  
+          function prevColor() {
+              currentIndex = (currentIndex - 1 + colors.length) % colors.length;
+              changeBackground(colors[currentIndex]);
+          }
+  
+          function nextColor() {
+              currentIndex = (currentIndex + 1) % colors.length;
+              changeBackground(colors[currentIndex]);
+          }
+      </script>
+  
+  </body>
+  </html>
+  

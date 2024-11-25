@@ -1,0 +1,73 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Table Export Example</title>
+    <style>
+        body {
+            margin: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+        }
+    </style>
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <h2>Employee Data</h2>
+    <table id="data-table">
+        <thead>
+            <tr>
+                <th>Employee</th>
+                <th>Salary</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Alice</td>
+                <td>1500</td>
+                <td>Austria</td>
+            </tr>
+            <tr>
+                <td>Bobby</td>
+                <td>1400</td>
+                <td>Belgium</td>
+            </tr>
+            <tr>
+                <td>Carl</td>
+                <td>2000</td>
+                <td>Canada</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <button id="export-btn"><b>Export as XLSX</b></button>
+
+    <script>
+        document.getElementById('export-btn').addEventListener('click', () => {
+            const workbook = XLSX.utils.table_to_book(document.getElementById('data-table'), { sheet: 'Data' });
+            XLSX.writeFile(workbook, 'EmployeeData.xlsx');
+        });
+    </script>
+
+</body>
+</html> 

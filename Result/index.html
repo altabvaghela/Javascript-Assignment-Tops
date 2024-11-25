@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        h3,
+        h4 {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .container {
+            border: 2px solid #333;
+            width: 450px;
+            padding:30px;
+            margin: 40px auto;
+            font-family: "Poppins", serif;
+            border-radius: 10px;
+            background-color: #ffffff;
+        }
+
+        .subjects {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .subjects label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        .inputs {
+            text-align: right;
+        }
+
+        .inputs input {
+            width: 60px;
+            padding: 5px;
+            margin:4px 0px;
+            border: 1px solid #333;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .btn button {
+            padding: 10px 30px;
+            font-weight: bold;
+            color: white;
+            background-color: #333;
+            border: none;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+
+        .results {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        .results span {
+            color: darkblue;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h3>Marksheet - Information Technology</h3>
+        <h4>Enter Your Marks</h4>
+        <div class="subjects">
+            <div>
+                <label>HTML:</label><br>
+                <label>CSS:</label><br>
+                <label>JAVASCRIPT:</label><br>
+                <label>REACT JS:</label><br>
+                <label>C++ Language:</label><br>
+                <label>Database:</label><br>
+                <label>Core Java:</label>
+            </div>
+            <div class="inputs">
+                <input type="number" placeholder="/50" id="marks1"><br>
+                <input type="number" placeholder="/50" id="marks2"><br>
+                <input type="number" placeholder="/50" id="marks3"><br>
+                <input type="number" placeholder="/50" id="marks4"><br>
+                <input type="number" placeholder="/50" id="marks5"><br>
+                <input type="number" placeholder="/50" id="marks6"><br>
+                <input type="number" placeholder="/50" id="marks7">
+            </div>
+        </div>
+        <div class="btn">
+            <button onclick="calculateResults()">Calculate</button>
+        </div>
+        <div class="results">
+            <div>Total Marks: <span id="total"></span>/350</div>
+            <div>Percentage: <span id="percentage"></span></div>
+        </div>
+    </div>
+
+    <script>
+        function calculateResults() {
+            let m1 = parseFloat(document.getElementById("marks1").value) || 0;
+            let m2 = parseFloat(document.getElementById("marks2").value) || 0;
+            let m3 = parseFloat(document.getElementById("marks3").value) || 0;
+            let m4 = parseFloat(document.getElementById("marks4").value) || 0;
+            let m5 = parseFloat(document.getElementById("marks5").value) || 0;
+            let m6 = parseFloat(document.getElementById("marks6").value) || 0;
+            let m7 = parseFloat(document.getElementById("marks7").value) || 0;
+
+            let totalMarks = m1 + m2 + m3 + m4 + m5 + m6 + m7;
+            let percentage = ((totalMarks / 350) * 100).toFixed(2);
+
+            document.getElementById("total").textContent = totalMarks;
+            document.getElementById("percentage").textContent = percentage + "%";
+        }
+    </script>
+</body>
+
+</html>

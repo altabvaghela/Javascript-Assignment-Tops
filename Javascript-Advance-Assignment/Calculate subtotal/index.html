@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        button {
+            background-color: orange;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .product-image {
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <table border="2px" cellpadding="5" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Product Info</th>
+                    <th>Quantity</th>
+                    <th>Price (per unit)</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr id="item1">
+                    <td class="product-info">
+                        <img src="Images/pexels-alexazabache-3907507.jpg" alt="Product 1" class="product-image"> <!-- Replace with actual image path -->
+                        <p>This is an elegant Nikon FG camera with a vintage design, beautifully reflected on a glossy surface.</p>
+                    </td>
+                    <td><input type="number" min="0" value="0" onchange="updateTotal()"></td>
+                    <td class="price">29.99</td>
+                    <td class="subtotal">0.00</td>
+                    <td><button onclick="removeItem('item1')">Remove</button></td>
+                </tr>
+                <tr id="item2">
+                    <td class="product-info">
+                        <img src="./Images/Product+Showcase-1.jpg" alt="Product 2" class="product-image"> <!-- Replace with actual image path -->
+                        <p>This is a modern, lightweight sneaker with a breathable mesh design and blue accents, showcased against a bold orange background.</p>
+                    </td>
+                    <td><input type="number" min="0" value="0" onchange="updateTotal()"></td>
+                    <td class="price">12.99</td>
+                    <td class="subtotal">0.00</td>
+                    <td><button onclick="removeItem('item2')">Remove</button></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: right;"><strong>Grand Total:</strong></td>
+                    <td id="grandTotal">0.00</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function updateTotal() {
+            let grandTotal = 0;
+            const rows = document.querySelectorAll('tbody tr[id^="item"]');
+
+            rows.forEach(row => {
+                const quantity = row.querySelector('input').value;
+                const price = parseFloat(row.querySelector('.price').innerText);
+                const subtotal = quantity * price;
+                row.querySelector('.subtotal').innerText = subtotal.toFixed(2);
+                grandTotal += subtotal;
+            });
+
+            document.getElementById('grandTotal').innerText = grandTotal.toFixed(2);
+        }
+
+        function removeItem(itemId) {
+            const row = document.getElementById(itemId);
+            row.querySelector('input').value = 0;
+            updateTotal();
+            row.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
